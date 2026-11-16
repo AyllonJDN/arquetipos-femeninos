@@ -96,17 +96,16 @@ export default function Introduccion() {
                     }
                   >
                     <div
-                      className={`relative pl-12 md:pl-0 ${
-                        isLeft ? "md:pr-10" : "md:pl-10"
+                      className={`relative pl-12 ${
+                        isLeft ? "md:pl-0 md:pr-10" : "md:pl-10"
                       }`}
                     >
                       {/* Dot on the spine: left edge of the phone-size line,
                           or snapped to the center spine on desktop */}
                       <span
-                        className={`absolute top-1 w-3 h-3 rounded-full bg-acento ring-4 ring-claro
-                          left-4 -translate-x-1/2
-                          md:left-auto md:translate-x-0
-                          ${isLeft ? "md:right-[-7px]" : "md:left-[-7px]"}`}
+                        className={`absolute top-1 w-3 h-3 rounded-full bg-acento ring-4 ring-claro left-4 -translate-x-1/2 md:left-auto md:translate-x-0 ${
+                          isLeft ? "md:-right-[7px]" : "md:-left-[7px]"
+                        }`}
                         aria-hidden="true"
                       />
                       <span className="font-serif text-acento text-sm font-semibold">
