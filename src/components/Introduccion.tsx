@@ -123,7 +123,7 @@ export default function Introduccion() {
         </div>
       </div>
 
-      <SectionDivider fill="#ffffff" flip />
+      <SectionDivider fill="#0e2a47" flip />
     </section>
   );
 }

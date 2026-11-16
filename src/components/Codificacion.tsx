@@ -4,6 +4,7 @@ import { FileSearch, Tags, ListTree } from "lucide-react";
 import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 import SectionDivider from "./SectionDivider";
+import DonutChart from "./DonutChart";
 
 const pasos = [
   {
@@ -34,6 +35,17 @@ const comparacion = [
     sub: "Película — Soltera, casada, viuda y divorciada",
     value: 5,
   },
+];
+
+const serieDist = [
+  { label: "Rechazo a personajes-tipo", value: 6, color: "#f87171" },
+  { label: "Nostalgia o indiferencia", value: 2, color: "#60a5fa" },
+];
+
+const peliculaDist = [
+  { label: "Empatía por situaciones", value: 5, color: "#34d399" },
+  { label: "Identificación personal", value: 2, color: "#60a5fa" },
+  { label: "Distancia", value: 1, color: "#f87171" },
 ];
 
 export default function Codificacion() {
@@ -85,7 +97,12 @@ export default function Codificacion() {
 
             <div className="space-y-6 mb-6">
               {comparacion.map((c) => (
-                <div key={c.label}>
+                <motion.div
+                  key={c.label}
+                  whileHover={{ scale: 1.015, x: 2 }}
+                  transition={{ duration: 0.2 }}
+                  className="cursor-default"
+                >
                   <div className="flex items-baseline justify-between gap-4 mb-1.5">
                     <span className="text-sm text-white/90">
                       {c.label}
@@ -95,25 +112,42 @@ export default function Codificacion() {
                       {c.value}/8
                     </span>
                   </div>
-                  <div className="h-2.5 rounded-full bg-white/10 overflow-hidden">
+                  <div className="h-2.5 rounded-full bg-white/10 overflow-hidden group">
                     <motion.div
-                      className="h-full rounded-full bg-acento"
+                      className="h-full rounded-full bg-acento group-hover:bg-opacity-90"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${(c.value / 8) * 100}%` }}
                       viewport={{ once: true, amount: 0.6 }}
+                      whileHover={{ filter: "brightness(1.25)" }}
                       transition={{ duration: 0.9, ease: "easeOut" }}
                     />
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
-            <p className="text-white/85 leading-relaxed border-t border-white/10 pt-5">
+            <p className="text-white/85 leading-relaxed border-t border-white/10 pt-5 mb-8">
               La empatía se concentra en la película y se genera por
               situaciones más que por tipos de personaje, mientras que el
               rechazo predomina frente a los personajes de la serie,
               percibidos como caricaturas sin posibilidad de evolución.
             </p>
+
+            <div className="border-t border-white/10 pt-8">
+              <p className="text-xs uppercase tracking-wide text-acento font-semibold mb-1 text-center">
+                Síntesis visual · pasa el cursor por cada segmento
+              </p>
+              <p className="text-xs text-white/40 text-center mb-6">
+                Proporciones aproximadas a partir de la codificación axial, no un recuento estadístico representativo
+              </p>
+              <div className="grid sm:grid-cols-2 gap-10 justify-items-center">
+                <DonutChart title="Al fondo hay sitio (serie)" slices={serieDist} />
+                <DonutChart
+                  title="Soltera, casada, viuda y divorciada (película)"
+                  slices={peliculaDist}
+                />
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>

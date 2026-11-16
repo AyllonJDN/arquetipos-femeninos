@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 const links = [
   { href: "#inicio", label: "Inicio" },
   { href: "#introduccion", label: "Introducción" },
+  { href: "#marco-teorico", label: "Marco teórico" },
   { href: "#metodologia", label: "Metodología" },
   { href: "#codificacion", label: "Codificación" },
   { href: "#resultados", label: "Resultados" },
