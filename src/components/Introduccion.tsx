@@ -103,8 +103,8 @@ export default function Introduccion() {
                       {/* Dot on the spine: left edge of the phone-size line,
                           or snapped to the center spine on desktop */}
                       <span
-                        className={`absolute top-1 w-3 h-3 rounded-full bg-acento ring-4 ring-claro left-4 -translate-x-1/2 md:left-auto md:translate-x-0 ${
-                          isLeft ? "md:-right-[7px]" : "md:-left-[7px]"
+                        className={`absolute top-1 w-3 h-3 rounded-full bg-acento ring-4 ring-claro left-4 -translate-x-1/2 md:translate-x-0 ${
+                          isLeft ? "md:left-auto md:-right-[7px]" : "md:-left-[7px]"
                         }`}
                         aria-hidden="true"
                       />
