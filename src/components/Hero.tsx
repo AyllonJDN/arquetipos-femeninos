@@ -94,6 +94,15 @@ export default function Hero() {
           >
             Zahody Angélica Camacho Bohorquez
           </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.45 }}
+            className="text-sm text-white/60 italic mb-8 -mt-6"
+          >
+            De parte del p4p4sit0 de Jesús, ahora tendrás que darle su premio.
+            ♥
+          </motion.p>
           <motion.a
             href="#introduccion"
             initial={{ opacity: 0, y: 24 }}
