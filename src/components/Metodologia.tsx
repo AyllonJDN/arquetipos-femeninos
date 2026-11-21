@@ -11,7 +11,7 @@ const tarjetas = [
   {
     icon: Users,
     title: "Focus group de 8 personas",
-    text: "Se aplicó un focus group a ocho participantes (cuatro mujeres y cuatro hombres), de entre 20 y 30 años, a quienes se les pidió comparar dos producciones peruanas muy distintas entre sí en formato: una serie de larga duración y una película.",
+    text: "Se aplicó un focus group a ocho participantes (cinco mujeres y tres hombres), de entre 20 y 30 años, a quienes se les pidió comparar dos producciones peruanas muy distintas entre sí en formato: una serie de larga duración y una película.",
   },
   {
     icon: Clapperboard,

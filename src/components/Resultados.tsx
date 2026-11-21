@@ -27,25 +27,35 @@ const serie = [
 const pelicula = [
   {
     name: "Lorena",
-    tag: "La soltera",
+    actriz: "Milene Vásquez",
+    roles: [
+      { pelicula: "la primera película", rol: "La soltera" },
+      { pelicula: "la secuela", rol: "La casada" },
+    ],
     quote:
       "Su historia permite hablar del deseo femenino, pero también deja ver el doble estándar moral frente a las decisiones sentimentales.",
   },
   {
-    name: "Connie",
-    tag: "La casada",
+    name: "Daniela",
+    actriz: "Patricia Portocarrero",
+    roles: [
+      { pelicula: "la primera película", rol: "La casada" },
+      { pelicula: "la secuela", rol: "La soltera" },
+    ],
     quote:
       "Sostiene el rol tradicional de esposa volcada al hogar, aunque enfrenta el agobio doméstico no siempre reconocido.",
   },
   {
     name: "Cecilia",
-    tag: "La viuda",
+    actriz: "Gianella Neyra",
+    roles: [{ pelicula: "ambas películas", rol: "La viuda" }],
     quote:
       "Atraviesa el duelo y se reconstruye con el apoyo de sus amigas, generando una de las identificaciones más fuertes del grupo.",
   },
   {
-    name: "Daniela",
-    tag: "La divorciada",
+    name: "Conny",
+    actriz: "Katia Condos",
+    roles: [{ pelicula: "ambas películas", rol: "La divorciada" }],
     quote:
       "Busca rehacer su vida después de la ruptura y cuestiona la idea de que un matrimonio infeliz deba mantenerse por compromiso social.",
   },
@@ -89,14 +99,20 @@ function GroupPhoto({
   );
 }
 
+type Rol = { pelicula: string; rol: string };
+
 function CharacterRow({
   name,
+  actriz,
   tag,
+  roles,
   quote,
   index,
 }: {
   name: string;
+  actriz?: string;
   tag?: string;
+  roles?: Rol[];
   quote: string;
   index: number;
 }) {
@@ -111,12 +127,31 @@ function CharacterRow({
             <h4 className="font-serif font-semibold text-lg text-marino">
               {name}
             </h4>
+            {actriz && (
+              <span className="text-xs text-marino/50">· {actriz}</span>
+            )}
             {tag && (
               <span className="text-xs uppercase tracking-wide text-acento font-semibold">
                 {tag}
               </span>
             )}
           </div>
+          {roles && roles.length > 0 && (
+            <div className="flex flex-wrap gap-x-4 gap-y-0.5 mb-2">
+              {roles.map((r) => (
+                <span
+                  key={r.pelicula}
+                  className="text-xs uppercase tracking-wide text-acento font-semibold"
+                >
+                  {r.rol}
+                  <span className="text-marino/40 normal-case tracking-normal font-normal">
+                    {" "}
+                    · {r.pelicula}
+                  </span>
+                </span>
+              ))}
+            </div>
+          )}
           <p className="text-sm sm:text-base text-marino/80 leading-relaxed">
             {quote}
           </p>
@@ -168,7 +203,8 @@ export default function Resultados() {
               <CharacterRow
                 key={c.name}
                 name={c.name}
-                tag={c.tag}
+                actriz={c.actriz}
+                roles={c.roles}
                 quote={c.quote}
                 index={i}
               />
